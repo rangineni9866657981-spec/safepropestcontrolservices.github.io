@@ -11,30 +11,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Handle form submission
+// Handle form submission - Redirect to WhatsApp
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
         
         // Get form data
-        const formData = new FormData(this);
         const name = this.querySelector('input[type="text"]').value;
         const email = this.querySelector('input[type="email"]').value;
         const phone = this.querySelector('input[type="tel"]').value;
         const message = this.querySelector('textarea').value;
         
-        // Create mailto link with form data
-        const mailtoLink = `mailto:info@safepropestcontrol.com?subject=Pest Control Inquiry from ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0A%0AMessage:%0A${encodeURIComponent(message)}`;
+        // Create WhatsApp message with form data
+        const whatsappMessage = `Hello Safe Pro Pest Control!\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage: ${message}\n\nPlease call me back or send a quote.`;
         
-        // Open default email client
-        window.location.href = mailtoLink;
+        // Encode the message for WhatsApp URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        
+        // WhatsApp API link
+        const whatsappLink = `https://wa.me/919100504155?text=${encodedMessage}`;
+        
+        // Open WhatsApp
+        window.open(whatsappLink, '_blank');
         
         // Reset form
         this.reset();
         
         // Show thank you message
-        alert('Thank you for your message! Please use your email client to send the message, or contact us directly at 9100504155');
+        alert('Thank you for your message! Redirecting to WhatsApp...');
     });
 }
 
