@@ -16,6 +16,71 @@ body {
     padding: 0 20px;
 }
 
+/* Sticky Contact Buttons */
+.sticky-contact {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 999;
+}
+
+.contact-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 28px;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.contact-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.contact-btn .btn-label {
+    position: absolute;
+    right: 75px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.contact-btn:hover .btn-label {
+    opacity: 1;
+}
+
+.whatsapp-btn {
+    background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+}
+
+.whatsapp-btn:hover {
+    background: linear-gradient(135deg, #20BA5A 0%, #1ba85b 100%);
+}
+
+.call-btn {
+    background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%);
+}
+
+.call-btn:hover {
+    background: linear-gradient(135deg, #1e4620 0%, #0f3510 100%);
+}
+
 /* Navigation */
 .navbar {
     background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%);
@@ -216,6 +281,11 @@ body {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: #1e4620;
 }
 
 .contact-item p {
@@ -273,6 +343,25 @@ body {
     margin: 0.5rem 0;
 }
 
+.footer-social {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+    color: #25D366;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-content h1 {
@@ -300,5 +389,21 @@ body {
 
     .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    .sticky-contact {
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .contact-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .contact-btn .btn-label {
+        font-size: 12px;
+        right: 65px;
     }
 }
